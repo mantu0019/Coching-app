@@ -1,4 +1,3 @@
- 
 import { GraduationCap } from "lucide-react";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -33,16 +32,24 @@ const Navbar = () => {
           className="relative z-10 flex items-center gap-3 text-lg font-semibold tracking-tight text-black transition duration-300 hover:text-black/70"
           onClick={() => setMenuOpen(false)}
         >
-           <span className=""><img 
-            className=" w-[165px]"
-           
-           src=".\public\logo.png" alt="" /></span>
+          <span className="">
+            <img
+              className=" w-[165px]"
+              src={`${import.meta.env.BASE_URL}logo.png`}
+              alt=""
+            />
+          </span>
         </NavLink>
 
         {/* Desktop nav links */}
         <div className="relative z-10 hidden items-center gap-1 md:flex">
           {navItems.map((item) => (
-            <NavLink key={item.to} to={item.to} end={item.to === "/"} className="relative group">
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.to === "/"}
+              className="relative group"
+            >
               {({ isActive }) => (
                 <span
                   className={`relative inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
@@ -78,9 +85,15 @@ const Navbar = () => {
         >
           <span className="sr-only">Open mobile menu</span>
           <div className="flex h-5 w-5 flex-col items-center justify-between">
-            <span className={`block h-0.5 w-5 rounded-full bg-black transition-all duration-300 ${menuOpen ? "translate-y-2 rotate-45" : ""}`}></span>
-            <span className={`block h-0.5 w-5 rounded-full bg-black transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`}></span>
-            <span className={`block h-0.5 w-5 rounded-full bg-black transition-all duration-300 ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}></span>
+            <span
+              className={`block h-0.5 w-5 rounded-full bg-black transition-all duration-300 ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
+            ></span>
+            <span
+              className={`block h-0.5 w-5 rounded-full bg-black transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`}
+            ></span>
+            <span
+              className={`block h-0.5 w-5 rounded-full bg-black transition-all duration-300 ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
+            ></span>
           </div>
         </button>
       </div>
@@ -95,11 +108,19 @@ const Navbar = () => {
       >
         <div className="flex flex-col gap-1 p-4">
           {navItems.map((item) => (
-            <NavLink key={item.to} to={item.to} end={item.to === "/"} className="relative group" onClick={() => setMenuOpen(false)}>
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.to === "/"}
+              className="relative group"
+              onClick={() => setMenuOpen(false)}
+            >
               {({ isActive }) => (
                 <span
                   className={`relative block rounded-full px-4 py-2.5 text-sm font-medium transition-all duration-300 ${
-                    isActive ? "bg-white text-black" : "text-black/70 hover:bg-white/60"
+                    isActive
+                      ? "bg-white text-black"
+                      : "text-black/70 hover:bg-white/60"
                   }`}
                 >
                   {item.label}
