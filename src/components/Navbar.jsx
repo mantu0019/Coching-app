@@ -1,6 +1,7 @@
+ 
 import { GraduationCap } from "lucide-react";
 import React, { useState } from "react";
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 
 const navItems = [
   { label: "Home", to: "/" },
@@ -8,52 +9,72 @@ const navItems = [
   { label: "Results", to: "/results" },
   { label: "Contact", to: "/contact" },
   { label: "About", to: "/about" },
+  { label: "Courses", to: "/courses" },
 ];
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="relative sticky top-0 z-50 w-full overflow-hidden border-b border-black/10 bg-white/95 px-4 py-3 text-black shadow-[0_20px_40px_-20px_rgba(0,0,0,0.25)] backdrop-blur-[14px]">
-      <div className="pointer-events-none absolute -right-10 top-4 h-36 w-36 rounded-full bg-black/5 blur-3xl opacity-35"></div>
-      <div className="pointer-events-none absolute left-4 top-8 h-24 w-24 rounded-full bg-black/5 blur-3xl opacity-20"></div>
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 md:px-6">
+    <header className="sticky top-0 z-50 w-full px-4 py-4 sm:px-8 lg:px-16">
+      <div
+        className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 overflow-hidden rounded-full border border-white/40 px-5 py-2.5 shadow-sm backdrop-blur-md md:px-6"
+        style={{
+          background: "rgba(255, 255, 255, 0.45)",
+        }}
+      >
+        {/* decorative soft glow blobs - jaise reference me hote hain */}
+        <div className="pointer-events-none absolute -right-10 top-4 h-36 w-36 rounded-full bg-white/40 blur-3xl opacity-40"></div>
+        <div className="pointer-events-none absolute left-4 top-8 h-24 w-24 rounded-full bg-white/30 blur-3xl opacity-30"></div>
+
+        {/* Logo */}
         <NavLink
           to="/"
-          className="flex items-center gap-3 text-lg font-semibold tracking-tight text-black transition duration-300 hover:text-black/70"
+          className="relative z-10 flex items-center gap-3 text-lg font-semibold tracking-tight text-black transition duration-300 hover:text-black/70"
           onClick={() => setMenuOpen(false)}
         >
-          <GraduationCap className="h-7 w-7 text-black" />
-          <span className="text-2xl">Success Academy</span>
+           <span className=""><img 
+            className=" w-[165px]"
+           
+           src=".\public\logo.png" alt="" /></span>
         </NavLink>
 
-        <div className="hidden items-center gap-4 md:flex">
+        {/* Desktop nav links */}
+        <div className="relative z-10 hidden items-center gap-1 md:flex">
           {navItems.map((item) => (
             <NavLink key={item.to} to={item.to} end={item.to === "/"} className="relative group">
               {({ isActive }) => (
                 <span
-                  className={`relative inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold uppercase tracking-[0.2em] transition duration-300 ${
-                    isActive ? "text-black" : "text-black/70 hover:text-black"
+                  className={`relative inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                    isActive
+                      ? "bg-white text-black shadow-sm"
+                      : "text-black/70 hover:bg-white/50 hover:text-black"
                   }`}
                 >
                   {item.label}
-                  <span
-                    className={`absolute left-4 right-4 -bottom-0.5 h-[2px] rounded-full bg-black transition-transform duration-300 ${
-                      isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                    }`}
-                  ></span>
                 </span>
               )}
             </NavLink>
           ))}
         </div>
 
+        {/* Login button (optional - image ki tarah) */}
+        <div className="relative z-10 hidden md:block">
+          <NavLink
+            to="/login"
+            className="rounded-full bg-gradient-to-r from-orange-400 to-orange-500 px-6 py-2.5 text-sm font-semibold text-white shadow-md transition-transform duration-200 hover:scale-105"
+          >
+            LOGIN
+          </NavLink>
+        </div>
+
+        {/* Mobile menu toggle */}
         <button
           type="button"
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
           onClick={() => setMenuOpen((prev) => !prev)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black/5 text-black transition duration-300 hover:border-black/20 hover:bg-black/10 md:hidden"
+          className="relative z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black/5 text-black transition duration-300 hover:border-black/20 hover:bg-black/10 md:hidden"
         >
           <span className="sr-only">Open mobile menu</span>
           <div className="flex h-5 w-5 flex-col items-center justify-between">
@@ -64,29 +85,35 @@ const Navbar = () => {
         </button>
       </div>
 
+      {/* Mobile dropdown */}
       <div
         id="mobile-navigation"
-        className={`overflow-hidden border-t border-black/10 bg-white/95 backdrop-blur-[14px] transition-[max-height] duration-500 ease-in-out md:hidden ${menuOpen ? "max-h-96" : "max-h-0"}`}
+        className={`mx-auto mt-2 max-w-7xl overflow-hidden rounded-3xl border border-white/40 backdrop-blur-md transition-[max-height] duration-500 ease-in-out md:hidden ${
+          menuOpen ? "max-h-96" : "max-h-0"
+        }`}
+        style={{ background: "rgba(255, 255, 255, 0.7)" }}
       >
-        <div className="flex flex-col gap-1 px-4 pb-4 pt-3">
+        <div className="flex flex-col gap-1 p-4">
           {navItems.map((item) => (
             <NavLink key={item.to} to={item.to} end={item.to === "/"} className="relative group" onClick={() => setMenuOpen(false)}>
               {({ isActive }) => (
                 <span
-                  className={`relative block rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.2em] transition duration-300 ${
-                    isActive ? "text-black" : "text-black/70 hover:text-black"
+                  className={`relative block rounded-full px-4 py-2.5 text-sm font-medium transition-all duration-300 ${
+                    isActive ? "bg-white text-black" : "text-black/70 hover:bg-white/60"
                   }`}
                 >
                   {item.label}
-                  <span
-                    className={`absolute left-4 right-4 bottom-2 h-[2px] rounded-full bg-black transition-transform duration-300 ${
-                      isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                    }`}
-                  ></span>
                 </span>
               )}
             </NavLink>
           ))}
+          <NavLink
+            to="/login"
+            onClick={() => setMenuOpen(false)}
+            className="mt-2 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 px-6 py-2.5 text-center text-sm font-semibold text-white shadow-md"
+          >
+            LOGIN
+          </NavLink>
         </div>
       </div>
     </header>
