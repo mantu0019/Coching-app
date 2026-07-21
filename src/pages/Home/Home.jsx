@@ -13,6 +13,7 @@ import StatsBar from "./StartBar";
 import Hero from "./Hero";
 import TopCourses from "./TopCourses";
 import WhyChooseUs from "./WhyChooseUs";
+import SelectionSection from "./Selection";
 
 const Home = () => {
   const quickLinks = ["about", "newBatch", "results", "contact"];
@@ -43,6 +44,10 @@ const Home = () => {
 
         <TopCourses/>
         <WhyChooseUs/>
+        <SelectionSection/>
+
+
+
 
         
       </div>

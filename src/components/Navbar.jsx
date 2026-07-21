@@ -5,10 +5,11 @@ import { NavLink } from "react-router-dom";
 const navItems = [
   { label: "Home", to: "/" },
   { label: "New Batch", to: "/newbatch" },
-  { label: "Results", to: "/results" },
+  { label: "Results", to: "/selection" },
   { label: "Contact", to: "/contact" },
   { label: "About", to: "/about" },
   { label: "Courses", to: "/courses" },
+  { label: "Faculty", to: "/faculty" },
 ];
 
 const Navbar = () => {
