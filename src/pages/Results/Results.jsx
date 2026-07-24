@@ -1,14 +1,17 @@
 import React from "react";
-import { selectionData } from "../config/selctionData";
-
-const Selections = () => {
+import { selectionData } from "../../config/selctionData";
+import AllStudentTestimonials from "./AllStudentTestimonials";
+ 
+const Results = () => {
   return (
+    <>
+    
     <section className="py-10">
       <div className="max-w-7xl mx-auto px-5">
         {/* Heading */}
         <div className="mb-10 text-center md:text-left">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">
-            Our Proud <span className="text-orange-500">Selections</span>
+            Our Proud <span className="text-orange-500">Results</span>
           </h2>
           <p className="text-slate-500 mt-2">
             Real students, real results
@@ -109,7 +112,9 @@ const Selections = () => {
         </div>
       </div>
     </section>
+     <AllStudentTestimonials/>
+    </>
   );
 };
 
-export default Selections;
+export default Results;

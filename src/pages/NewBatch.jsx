@@ -165,7 +165,7 @@ function NewBatch() {
           className="anim-fade-up text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight text-[#2b241d]"
           style={{ fontFamily: "Sora, sans-serif", animationDelay: "80ms" }}
         >
-          New Batches Starting Soon
+          New Batches Starting <span className=" text-orange-500">Soon</span>
         </h1>
         <p
           className="anim-fade-up mt-4 text-sm sm:text-base text-[#6b5f50] max-w-xl mx-auto leading-relaxed"

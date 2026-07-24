@@ -1,3 +1,7 @@
+ 
+
+
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Shield,
@@ -59,17 +63,78 @@ const courses = [
   },
 ];
 
+// Card viewport me aate hi visible = true
+const useInView = (options = { threshold: 0.2 }) => {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setInView(true);
+        observer.unobserve(el);
+      }
+    }, options);
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return [ref, inView];
+};
+
+const CourseCard = ({ course, index }) => {
+  const Icon = course.icon;
+  const [ref, inView] = useInView();
+
+  return (
+    <div
+      ref={ref}
+      className="flex flex-col items-center gap-3 rounded-2xl border border-white/50 bg-white/60 px-4 py-6 text-center shadow-sm transition-all duration-700 ease-out hover:-translate-y-2 hover:shadow-xl"
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0) scale(1)" : "translateY(50px) scale(0.9)",
+        transitionDelay: `${(index % 7) * 90}ms`,
+      }}
+    >
+      <div
+        className={`flex h-16 w-16 items-center justify-center rounded-full ${course.iconBg} transition-transform duration-700 ease-out`}
+        style={{
+          transform: inView ? "rotate(0deg) scale(1)" : "rotate(-20deg) scale(0.6)",
+          transitionDelay: `${(index % 7) * 90 + 100}ms`,
+        }}
+      >
+        <Icon className="h-8 w-8 text-white" strokeWidth={1.8} />
+      </div>
+
+      <h3 className="text-lg font-extrabold text-slate-900">{course.title}</h3>
+
+      <p className="text-sm text-gray-600">{course.desc}</p>
+
+      <Link
+        to={`/courses/${course.slug}`}
+        className="mt-2 font-bold text-blue-700 transition hover:text-blue-900"
+      >
+        Explore →
+      </Link>
+    </div>
+  );
+};
+
 const TopCourses = () => {
   return (
-    <section className="w-full px-4 py-14 sm:px-8 lg:px-16">
+    <section className="w-full px-4 py-5 sm:px-8 lg:px-16">
       {/* Heading */}
       <div className="mb-10 flex flex-col items-center text-center">
         <span className="mb-1 flex items-center gap-2 text-sm font-semibold text-blue-700 sm:text-base">
           <span>→</span> Popular Courses <span>←</span>
         </span>
 
-        <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl md:text-5xl">
-          Our Top Courses
+        <h2 className="text text-3xl font-extrabold text-slate-900 sm:text-4xl md:text-5xl">
+          Our Top <span className=" text-orange-500">Courses</span>
         </h2>
       </div>
 
@@ -80,40 +145,9 @@ const TopCourses = () => {
           background: "rgba(255,255,255,.25)",
         }}
       >
-        {courses.map((course) => {
-          const Icon = course.icon;
-
-          return (
-            <div
-              key={course.slug}
-              className="flex flex-col items-center gap-3 rounded-2xl border border-white/50 bg-white/60 px-4 py-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
-            >
-              <div
-                className={`flex h-16 w-16 items-center justify-center rounded-full ${course.iconBg}`}
-              >
-                <Icon
-                  className="h-8 w-8 text-white"
-                  strokeWidth={1.8}
-                />
-              </div>
-
-              <h3 className="text-lg font-extrabold text-slate-900">
-                {course.title}
-              </h3>
-
-              <p className="text-sm text-gray-600">
-                {course.desc}
-              </p>
-
-              <Link
-                to={`/courses/${course.slug}`}
-                className="mt-2 font-bold text-blue-700 transition hover:text-blue-900"
-              >
-                Explore →
-              </Link>
-            </div>
-          );
-        })}
+        {courses.map((course, index) => (
+          <CourseCard key={course.slug} course={course} index={index} />
+        ))}
       </div>
     </section>
   );

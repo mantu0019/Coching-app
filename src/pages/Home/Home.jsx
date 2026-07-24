@@ -14,6 +14,8 @@ import Hero from "./Hero";
 import TopCourses from "./TopCourses";
 import WhyChooseUs from "./WhyChooseUs";
 import SelectionSection from "./Selection";
+import StudentTestimonials from "./StudentTestimonials";
+import LatestUpdates from "./LatestUpdates";
 
 const Home = () => {
   const quickLinks = ["about", "newBatch", "results", "contact"];
@@ -45,7 +47,8 @@ const Home = () => {
         <TopCourses/>
         <WhyChooseUs/>
         <SelectionSection/>
-
+        <StudentTestimonials/>
+        <LatestUpdates/>
 
 
 

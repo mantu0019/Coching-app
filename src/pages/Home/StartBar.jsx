@@ -1,138 +1,132 @@
-// import { Users, Trophy, User, Award } from "lucide-react";
+ 
 
-// const stats = [
-//   {
-//     icon: Users,
-//     value: "5000+",
-//     label: "Students Trained",
-//     bg: "bg-blue-800",
-//   },
-//   {
-//     icon: Trophy,
-//     value: "1000+",
-//     label: "Selections",
-//     bg: "bg-yellow-500",
-//   },
-//   {
-//     icon: User,
-//     value: "15+",
-//     label: "Expert Faculty",
-//     bg: "bg-blue-800",
-//   },
-//   {
-//     icon: Award,
-//     value: "10+",
-//     label: "Years of Excellence",
-//     bg: "bg-yellow-500",
-//   },
-// ];
-
-// const StatsBar = () => {
-//   return (
-//     <div
-//       className=" mt-12 mx-auto w-full max-w-6xl rounded-2xl border border-white/40 px-6 py-8 shadow-lg backdrop-blur-xl sm:px-10"
-//       style={{
-//         background: "rgba(255, 255, 255, 0.25)",
-//       }}
-//     >
-//       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-black/10">
-//         {stats.map((stat, index) => {
-//           const Icon = stat.icon;
-//           return (
-//             <div
-//               key={index}
-//               className="flex items-center justify-center gap-4 px-2 lg:justify-start lg:px-6 first:lg:pl-0"
-//             >
-//               <div
-//                 className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full sm:h-16 sm:w-16 ${stat.bg}`}
-//               >
-//                 <Icon className="h-6 w-6 text-white sm:h-7 sm:w-7" strokeWidth={2} />
-//               </div>
-//               <div className="flex flex-col">
-//                 <span className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
-//                   {stat.value}
-//                 </span>
-//                 <span className="text-xs font-medium text-gray-600 sm:text-sm">
-//                   {stat.label}
-//                 </span>
-//               </div>
-//             </div>
-//           );
-//         })}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default StatsBar;
-
-
-
+import React, { useEffect, useRef, useState } from "react";
 import { Users, Trophy, User, Award } from "lucide-react";
 
 const stats = [
   {
     icon: Users,
-    value: "5000+",
+    value: 5000,
+    suffix: "+",
     label: "Students Trained",
     bg: "bg-blue-800",
   },
   {
     icon: Trophy,
-    value: "1000+",
+    value: 1000,
+    suffix: "+",
     label: "Selections",
     bg: "bg-yellow-500",
   },
   {
     icon: User,
-    value: "15+",
+    value: 15,
+    suffix: "+",
     label: "Expert Faculty",
     bg: "bg-blue-800",
   },
   {
     icon: Award,
-    value: "10+",
+    value: 10,
+    suffix: "+",
     label: "Years of Excellence",
     bg: "bg-yellow-500",
   },
 ];
 
+// Card viewport me aate hi visible = true
+const useInView = (options = { threshold: 0.3 }) => {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setInView(true);
+        observer.unobserve(el);
+      }
+    }, options);
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return [ref, inView];
+};
+
+// inView hote hi 0 se target tak count-up karega
+const useCountUp = (target, inView, duration = 1500) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+
+    let startTime = null;
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      setCount(Math.floor(progress * target));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [inView, target, duration]);
+
+  return count;
+};
+
+const StatItem = ({ stat, index, inView }) => {
+  const Icon = stat.icon;
+  const count = useCountUp(stat.value, inView);
+
+  return (
+    <div
+      className="flex flex-col items-center text-center lg:flex-row lg:justify-center lg:text-left lg:px-8 transition-all duration-700 ease-out"
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0)" : "translateY(40px)",
+        transitionDelay: `${index * 120}ms`,
+      }}
+    >
+      <div
+        className={`flex h-16 w-16 items-center justify-center rounded-full shadow-md ${stat.bg} transition-transform duration-700 ease-out`}
+        style={{
+          transform: inView ? "scale(1)" : "scale(0.6)",
+          transitionDelay: `${index * 120 + 100}ms`,
+        }}
+      >
+        <Icon className="h-8 w-8 text-white" strokeWidth={2} />
+      </div>
+
+      <div className="mt-3 lg:mt-0 lg:ml-4">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+          {count.toLocaleString()}
+          {stat.suffix}
+        </h2>
+
+        <p className="mt-1 text-xs sm:text-sm text-gray-600 leading-tight">
+          {stat.label}
+        </p>
+      </div>
+    </div>
+  );
+};
+
 const StatsBar = () => {
+  const [ref, inView] = useInView();
+
   return (
     <section className="mt-12 px-4">
       <div
+        ref={ref}
         className="mx-auto w-full max-w-7xl rounded-3xl border border-white/40 bg-white/20 backdrop-blur-xl shadow-xl p-6 sm:p-8 lg:p-10"
       >
         <div className="grid grid-cols-2 gap-6 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-gray-300/40">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon;
-
-            return (
-              <div
-                key={index}
-                className="flex flex-col items-center text-center lg:flex-row lg:justify-center lg:text-left lg:px-8"
-              >
-                <div
-                  className={`flex h-16 w-16 items-center justify-center rounded-full shadow-md ${stat.bg}`}
-                >
-                  <Icon
-                    className="h-8 w-8 text-white"
-                    strokeWidth={2}
-                  />
-                </div>
-
-                <div className="mt-3 lg:mt-0 lg:ml-4">
-                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
-                    {stat.value}
-                  </h2>
-
-                  <p className="mt-1 text-xs sm:text-sm text-gray-600 leading-tight">
-                    {stat.label}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+          {stats.map((stat, index) => (
+            <StatItem key={index} stat={stat} index={index} inView={inView} />
+          ))}
         </div>
       </div>
     </section>

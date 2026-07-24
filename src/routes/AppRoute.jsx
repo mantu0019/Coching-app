@@ -5,12 +5,12 @@ import NewBatch from "../pages/NewBatch";
 import Course from "../pages/Course";
 import MainLayout from "../components/MainLayout";
 import NotFound from "../components/NotFound";
-import Result from "../pages/Result";
 import Home from "../pages/Home/Home";
 import CourseDetails from "../pages/CourseDetails";
-import Selections from "../pages/Selections";
+import Selections from "../pages/Results/Results";
 import About from "../pages/About/About";
 import Faculty from "../pages/Faculty";
+import Results from "../pages/Results/Results";
 
 export const appRoute = createHashRouter([
   {
@@ -36,16 +36,13 @@ export const appRoute = createHashRouter([
         path: "/courses",
         element: <Course />,
       },
-      {
-        path: "/results",
-        element: <Result />,
-      },
+       
       {path:"/courses/:slug",
         element:<CourseDetails/>
       },
       {
-        path:"/selection",
-        element:<Selections/>
+        path:"/results",
+        element:<Results/>
       },
       {path:"/faculty",
         element:<Faculty/>
