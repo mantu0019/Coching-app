@@ -1,7 +1,6 @@
 import {  createHashRouter } from "react-router-dom";
 
-import Contact from "../pages/Contact";
-import NewBatch from "../pages/NewBatch";
+ import NewBatch from "../pages/NewBatch";
 import Course from "../pages/Course";
 import MainLayout from "../components/MainLayout";
 import NotFound from "../components/NotFound";
@@ -11,6 +10,9 @@ import Selections from "../pages/Results/Results";
 import About from "../pages/About/About";
 import Faculty from "../pages/Faculty";
 import Results from "../pages/Results/Results";
+import Contact from "../pages/contact/Contact";
+import TermandCondition from "../pages/Home/TermandCondition";
+import PrivicyPolicy from "../pages/Home/PrivicyPolicy";
 
 export const appRoute = createHashRouter([
   {
@@ -46,6 +48,14 @@ export const appRoute = createHashRouter([
       },
       {path:"/faculty",
         element:<Faculty/>
+      },
+      {
+        path:"/term&codition",
+        element:<TermandCondition/>
+      },
+      {
+        path:"/privacy-policy",
+        element:<PrivicyPolicy/>
       }
     ],
   },

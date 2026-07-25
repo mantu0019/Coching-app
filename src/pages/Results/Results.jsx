@@ -1,12 +1,13 @@
 import React from "react";
 import { selectionData } from "../../config/selctionData";
 import AllStudentTestimonials from "./AllStudentTestimonials";
+import TopPerformer from "./TopPerformer";
  
 const Results = () => {
   return (
     <>
-    
-    <section className="py-10">
+    <TopPerformer/>
+    <section className="py-5">
       <div className="max-w-7xl mx-auto px-5">
         {/* Heading */}
         <div className="mb-10 text-center md:text-left">
@@ -25,7 +26,7 @@ const Results = () => {
               key={student.id}
               className="rounded-3xl bg-white/30 backdrop-blur-xl border border-white/50 shadow-xl p-5 lg:p-6 flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
             >
-              {/* Top: photo + name */}
+              
               <div className="flex items-center gap-3">
                 <div className="relative flex-shrink-0">
                   <img
@@ -113,6 +114,7 @@ const Results = () => {
       </div>
     </section>
      <AllStudentTestimonials/>
+      
     </>
   );
 };

@@ -147,7 +147,7 @@ const DirectorMessage = () => {
 
           <div className="mx-auto mt-6 max-w-xl space-y-4 lg:mx-0" style={{ fontFamily: "Inter, sans-serif" }}>
             <p className="leading-relaxed text-slate-600">
-              At Success Academy, we believe that every student has the
+              At Vikash coaching institute, we believe that every student has the
               potential to succeed. Our mission is to provide quality
               education, expert guidance, disciplined preparation, and
               continuous motivation so that every aspirant can achieve their
