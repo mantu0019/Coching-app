@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 // Replace with the academy's real WhatsApp number (country code + number, no + or spaces)
-const WHATSAPP_NUMBER = "917484932591";
+const WHATSAPP_NUMBER = "917808900900";
 
 const tagStyles = {
   "Filling Fast": "bg-orange-400/20 text-orange-700 border-orange-400/40",

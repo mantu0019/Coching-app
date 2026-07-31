@@ -1,5 +1,3 @@
- 
-
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Clock, ChevronRight } from "lucide-react";
@@ -11,32 +9,62 @@ gsap.registerPlugin(ScrollTrigger);
 /* lucide-react removed brand/logo icons (trademark reasons), so social
    icons are small inline SVGs instead — no extra dependency needed. */
 const Instagram = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    {...props}
+  >
     <rect x="2" y="2" width="20" height="20" rx="5" />
     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
   </svg>
 );
 const Facebook = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    {...props}
+  >
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
   </svg>
 );
 const Youtube = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    {...props}
+  >
     <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
     <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
   </svg>
 );
 const Linkedin = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    {...props}
+  >
     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
     <rect x="2" y="9" width="4" height="12" />
     <circle cx="4" cy="4" r="2" />
   </svg>
 );
 const Twitter = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    {...props}
+  >
     <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
   </svg>
 );
@@ -53,30 +81,42 @@ const quickLinks = [
 ];
 
 const courseLinks = [
-  { label: "SSC", to: "/courses/ssc" },
+  { label: "SSC", to: "/courses/ssc-cgl" },
   { label: "Railway", to: "/courses/railway" },
   { label: "Banking", to: "/courses/banking" },
   { label: "BPSC", to: "/courses/bpsc" },
- 
+
   { label: "Police", to: "/courses/bihar-si" },
   { label: "CTET", to: "/courses/ctet-tre" },
 ];
 
 const socialLinks = [
-  { label: "Instagram", href: "https://instagram.com", Icon: Instagram },
-  { label: "Facebook", href: "https://facebook.com", Icon: Facebook },
-  { label: "YouTube", href: "https://youtube.com", Icon: Youtube },
-  { label: "LinkedIn", href: "https://linkedin.com", Icon: Linkedin },
-  { label: "Twitter", href: "https://twitter.com", Icon: Twitter },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/vikascoachinginstitute?igsh=MTMxcjI4MHF0Mzl4Zw==",
+    Icon: Instagram,
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/share/1DFR4Khvzz/",
+    Icon: Facebook,
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@vikascoachinginstitute",
+    Icon: Youtube,
+  },
 ];
 
 const contactInfo = {
-  address: "Bihar shrif, Bihar 803101",
-  addressMapUrl: "https://maps.google.com/?q=Boring+Road+Patna+Bihar",
-  phone: "+91 98765 43210",
-  email: "hello@vikashcoaching.in",
-  hours: "Mon – Sat, 8 AM – 8 PM",
-  mapEmbedUrl: "https://www.google.com/maps?q=Bihar+Sharif,Nalanda,Bihar&output=embed",
+  address: "Bihar shrif, Near machhli market  Bihar 803101",
+  addressMapUrl:
+    "https://www.google.com/maps/place/Vikas+Coaching+Institute/@25.1958631,85.5150726,17z/data=!4m6!3m5!1s0x39f2f35955555523:0xda40d7cb2280c52f!8m2!3d25.195864!4d85.5150741!16s%2Fg%2F11bx8m06zt?hl=en&entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D",
+  phone: "+917808900900",
+  email: "vikascoachinginstitute@gmail.com",
+  hours: "Mon – Sat, 7 AM – 7 PM",
+  mapEmbedUrl:
+    "https://www.google.com/maps?q=Bihar+Sharif,Nalanda,Bihar&output=embed",
 };
 
 const FooterLink = ({ to, children }) => (
@@ -117,7 +157,7 @@ const Footer = () => {
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
     if (prefersReducedMotion) return;
 
@@ -177,8 +217,12 @@ const Footer = () => {
           {/* Column 1 — Logo + About */}
           <div ref={addColumnRef}>
             <Link to="/" className="inline-flex items-center gap-2">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#f97316] to-[#fb923c] font-bold text-white shadow-[0_6px_16px_rgba(249,115,22,0.35)]">
-                V
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl  font-bold text-white ">
+                <img
+                  className=" w-[165px]"
+                  src={`${import.meta.env.BASE_URL}only-logo.png`}
+                  alt=""
+                />
               </span>
               <span className="text-base font-bold tracking-tight text-[#2a251e]">
                 Vikash Coaching Institute
@@ -189,16 +233,10 @@ const Footer = () => {
             </p>
             <div className="mt-4 flex flex-wrap gap-2.5">
               <Link
-                to="/apply"
+                to="/get-admission"
                 className="rounded-full bg-gradient-to-r from-[#f97316] to-[#fb923c] px-4 py-2 text-xs font-semibold text-white shadow-[0_6px_18px_rgba(249,115,22,0.35)] transition-transform duration-300 hover:scale-105"
               >
-                Apply Now
-              </Link>
-              <Link
-                to="/demo"
-                className="rounded-full border border-[#f97316]/30 bg-white/40 px-4 py-2 text-xs font-semibold text-[#2a251e] backdrop-blur-md transition-transform duration-300 hover:scale-105 hover:border-[#f97316]/60"
-              >
-                Free Demo
+                Get admission Information
               </Link>
             </div>
           </div>
@@ -262,7 +300,10 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="flex items-start gap-2 transition-colors duration-300 hover:text-[#f97316]"
                 >
-                  <MapPin size={14} className="mt-0.5 shrink-0 text-[#f97316]" />
+                  <MapPin
+                    size={14}
+                    className="mt-0.5 shrink-0 text-[#f97316]"
+                  />
                   <span>{contactInfo.address}</span>
                 </a>
               </li>
@@ -312,13 +353,18 @@ const Footer = () => {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-xs text-[#8a8072]">
-            <Link to="/privacy-policy" className="transition-colors hover:text-[#f97316]">
+            <Link
+              to="/privacy-policy"
+              className="transition-colors hover:text-[#f97316]"
+            >
               Privacy Policy
             </Link>
-            <Link to="/term&codition" className="transition-colors hover:text-[#f97316]">
+            <Link
+              to="/term&codition"
+              className="transition-colors hover:text-[#f97316]"
+            >
               Terms &amp; Conditions
             </Link>
-            
           </div>
         </div>
       </div>

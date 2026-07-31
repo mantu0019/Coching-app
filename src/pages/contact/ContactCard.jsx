@@ -29,25 +29,25 @@ const ContactCard = () => {
       id: 1,
       icon: <MapPin className="w-8 h-8 text-orange-500" />,
       title: "Address",
-      value: "Bihar Sharif, Nalanda, Bihar",
+      value: "Bihar Sharif,Near Macchli Market Nalanda, Bihar",
     },
     {
       id: 2,
       icon: <Phone className="w-8 h-8 text-orange-500" />,
       title: "Phone",
-      value: "+91 98765 43210",
+      value: "+917808900900",
     },
     {
       id: 3,
       icon: <Mail className="w-8 h-8 text-orange-500" />,
       title: "Email",
-      value: "info@coaching.com",
+      value: "vikascoachinginstitute@gmail.com",
     },
     {
       id: 4,
       icon: <Clock className="w-8 h-8 text-orange-500" />,
       title: "Working Hours",
-      value: "Mon - Sat\n9:00 AM - 7:00 PM",
+      value: "Mon - Sat\n7:00 AM - 7:00 PM",
     },
   ];
 

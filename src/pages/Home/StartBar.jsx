@@ -1,33 +1,33 @@
  
 
 import React, { useEffect, useRef, useState } from "react";
-import { Users, Trophy, User, Award } from "lucide-react";
+import { Users, Trophy, User, Award,BookOpen } from "lucide-react";
 
 const stats = [
   {
     icon: Users,
-    value: 5000,
+    value: 30000,
     suffix: "+",
     label: "Students Trained",
     bg: "bg-blue-800",
   },
   {
     icon: Trophy,
-    value: 1000,
+    value: 1300,
     suffix: "+",
     label: "Selections",
     bg: "bg-yellow-500",
   },
   {
-    icon: User,
-    value: 15,
-    suffix: "+",
-    label: "Expert Faculty",
+    icon: BookOpen,
+    value: 100,
+    suffix: "%",
+    label: "Study Material",
     bg: "bg-blue-800",
   },
   {
     icon: Award,
-    value: 10,
+    value: 15,
     suffix: "+",
     label: "Years of Excellence",
     bg: "bg-yellow-500",

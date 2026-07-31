@@ -1,8 +1,9 @@
 import { useGSAP } from "@gsap/react";
 import React, { useRef } from "react";
-import { GraduationCap, Phone } from "lucide-react";
+import { GraduationCap, Phone, Rocket } from "lucide-react";
 import gsap from "gsap";
 import { FaWhatsapp } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const containerRef = useRef(null);
@@ -31,9 +32,8 @@ const Hero = () => {
           {
             y: 100,
             opacity: 0,
-            ease:"power4.out",
+            ease: "power4.out",
             stagger: 0.3,
-         
           },
           "-=0.4",
         );
@@ -76,28 +76,41 @@ const Hero = () => {
 
         <div
           ref={connectionRef}
-          className=" contact grid w-full grid-cols-1 gap-2.5 sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-3 lg:justify-start"
+          className=" contact grid w-full grid-cols-1 gap-2.5 sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-3 lg:justify-center"
         >
-          <div className="flex items-center justify-center gap-1.5 rounded bg-blue-500 px-3.5 py-2.5 text-sm font-bold text-white sm:text-base">
-            <GraduationCap size={20} className="shrink-0" />
-            <span>7 Days FREE Demo Class</span>
-          </div>
+          <Link
+            to="/get-admission"
+            className="flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:bg-blue-700 hover:shadow-xl active:scale-95 sm:text-base"
+          >
+            <Rocket size={20} className="shrink-0" />
+            <span>Start Your Journey</span>
+          </Link>
 
           <a
-            href="tel:+917484932591"
+            href="tel:+917808900900"
             className="flex items-center justify-center gap-2 rounded bg-orange-500 px-3.5 py-2.5 text-sm font-bold capitalize text-white transition-transform duration-150 active:scale-95 sm:text-base"
           >
             <Phone size={20} className="shrink-0" />
             <span>Admission Enquiry</span>
           </a>
+
           <a
-            href="https://wa.me/917484932591?text=Hello%20Sir,%20mujhe%20admission%20ke%20baare%20me%20jaankari%20chahiye."
+            href="https://wa.me/917808900900?text=Hello%20Sir,%20mujhe%20admission%20ke%20baare%20me%20jaankari%20chahiye."
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 rounded bg-green-500 px-3.5 py-2.5 text-sm font-bold capitalize text-white transition-transform duration-150 active:scale-95 sm:text-base"
           >
             <FaWhatsapp size={20} className="shrink-0 text-white" />
             <span>WhatsApp Now</span>
+          </a>
+          <a
+            href="https://wa.me/917808900900?text=Namaste%20Sir,%20main%20Free%20Demo%20Class%20lena%20chahta%20hu.%20Kripya%20mujhe%20iski%20details%20share%20kijiye."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-1.5 rounded bg-blue-500 px-3.5 py-2.5 text-sm font-bold text-white transition-transform duration-150 hover:bg-blue-600 active:scale-95 sm:text-base"
+          >
+            <GraduationCap size={20} className="shrink-0" />
+            <span>Book Free Demo Class</span>
           </a>
         </div>
       </div>

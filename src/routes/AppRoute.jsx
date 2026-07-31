@@ -1,7 +1,7 @@
 import {  createHashRouter } from "react-router-dom";
 
  import NewBatch from "../pages/NewBatch";
-import Course from "../pages/Course";
+import Course from "../pages/courses/Course";
 import MainLayout from "../components/MainLayout";
 import NotFound from "../components/NotFound";
 import Home from "../pages/Home/Home";
@@ -13,6 +13,7 @@ import Results from "../pages/Results/Results";
 import Contact from "../pages/contact/Contact";
 import TermandCondition from "../pages/Home/TermandCondition";
 import PrivicyPolicy from "../pages/Home/PrivicyPolicy";
+import ContactForm from "../pages/contact/ContactForm";
 
 export const appRoute = createHashRouter([
   {
@@ -21,6 +22,10 @@ export const appRoute = createHashRouter([
       {
         path: "/",
         element: <Home/>,
+      },
+      {
+        path:"/get-admission",
+        element:<ContactForm/>
       },
       {
         path: "/about",
@@ -36,7 +41,7 @@ export const appRoute = createHashRouter([
       },
       {
         path: "/courses",
-        element: <Course />,
+        element: <Course/>,
       },
        
       {path:"/courses/:slug",

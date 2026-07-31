@@ -3,26 +3,26 @@ import { Calendar, School, Users, Trophy } from "lucide-react";
 
 const journeyData = [
   {
-    year: "2015",
+    year: "2011",
     title: "Institute Started",
     icon: <School size={28} />,
     color: "bg-orange-100 text-orange-600",
   },
   {
-    year: "2017",
-    title: "500+ Students",
+    year: "2013",
+    title: "200+ Students selections",
     icon: <Users size={28} />,
     color: "bg-sky-100 text-sky-600",
   },
   {
     year: "2020",
-    title: "1000+ Selections",
+    title: "1000+ Students Selections",
     icon: <Trophy size={28} />,
     color: "bg-green-100 text-green-600",
   },
   {
-    year: "2025",
-    title: "Top Coaching Institute",
+    year: "2026",
+    title: " 1300+ Students Selection & Top Coaching Institute",
     icon: <Calendar size={28} />,
     color: "bg-purple-100 text-purple-600",
   },

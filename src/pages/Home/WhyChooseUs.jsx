@@ -18,7 +18,7 @@ const features = [
   { icon: UserRound, title: "Personal", subtitle: "Mentorship", color: "bg-amber-500" },
   { icon: FileEdit, title: "Updated", subtitle: "Study Material", color: "bg-blue-800" },
   { icon: MessageSquare, title: "Doubt", subtitle: "Clearing Classes", color: "bg-amber-500" },
-  { icon: FileBarChart, title: "Performance", subtitle: "Analysis", color: "bg-blue-800" },
+  { icon: UserRound, title: "Interview", subtitle: "Interview Guidance", color: "bg-blue-800" },
 ];
 
 // Card viewport me aate hi visible = true

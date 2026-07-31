@@ -7,9 +7,9 @@ import {
 } from "lucide-react";
 
 const QuickContact = () => {
-  const whatsappNumber = "919876543210";
-  const phoneNumber = "+919876543210";
-  const email = "info@coaching.com";
+  const whatsappNumber = "917808900900";
+  const phoneNumber = "+917808900900";
+  const email = "vikascoachinginstitute@gmail.com";
 
   const buttons = [
     {
@@ -47,7 +47,7 @@ const QuickContact = () => {
       color: "bg-red-500 hover:bg-red-600",
       onClick: () =>
         window.open(
-          "https://www.google.com/maps/search/?api=1&query=Bihar+Sharif+Nalanda+Bihar",
+          "https://www.google.com/maps/place/Vikas+Coaching+Institute/@25.1958631,85.5150726,17z/data=!4m6!3m5!1s0x39f2f35955555523:0xda40d7cb2280c52f!8m2!3d25.195864!4d85.5150741!16s%2Fg%2F11bx8m06zt?hl=en&entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D",
           "_blank"
         ),
     },
