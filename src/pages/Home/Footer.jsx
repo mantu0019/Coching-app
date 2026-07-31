@@ -114,10 +114,11 @@ const socialLinks = [
 ];
 
 const contactInfo = {
-  address: "Bihar Shrif, Near Machhli Market  Bihar 803101",
+  address: "Nala Road, Near Machhli Market Bihar Sharif, Nalanda",
   addressMapUrl:
     "https://www.google.com/maps/place/Vikas+Coaching+Institute/@25.1958631,85.5150726,17z/data=!4m6!3m5!1s0x39f2f35955555523:0xda40d7cb2280c52f!8m2!3d25.195864!4d85.5150741!16s%2Fg%2F11bx8m06zt?hl=en&entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D",
-  phone: "+917808900900",
+
+  phones: ["+917808900900", "+919304423567"],
   email: "vikascoachinginstitute@gmail.com",
   hours: "Mon – Sat, 7 AM – 7 PM",
   mapEmbedUrl:
@@ -281,14 +282,18 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2 text-sm text-[#5c5347]">
               <li>
-                <a
-                  href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
-                  className="flex items-center gap-2 transition-colors duration-300 hover:text-[#f97316]"
-                >
-                  <Phone size={14} className="shrink-0 text-[#f97316]" />
-                  {contactInfo.phone}
-                </a>
+                {contactInfo.phones.map((phone) => (
+                  <a
+                    key={phone}
+                    href={`tel:${phone.replace(/\s/g, "")}`}
+                    className="flex items-center gap-2 transition-colors duration-300 hover:text-[#f97316]"
+                  >
+                    <Phone size={14} className="shrink-0 text-[#f97316]" />
+                    <span>{phone}</span>
+                  </a>
+                ))}
               </li>
+
               <li>
                 <a
                   href={`mailto:${contactInfo.email}`}
