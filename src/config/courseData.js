@@ -32,7 +32,7 @@ export const courses = [
       "Computer",
     ],
     features: [
-      "Daily Live Classes",
+       
       "Weekly Mock Test",
       "Printed Notes",
       "Doubt Sessions",

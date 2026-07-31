@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail, Clock, ChevronRight } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, ChevronRight, Send } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -106,10 +106,15 @@ const socialLinks = [
     href: "https://www.youtube.com/@vikascoachinginstitute",
     Icon: Youtube,
   },
+  {
+    label: "Telegram",
+    href: "https://t.me/vcibiharsharif",
+    Icon: Send,
+  },
 ];
 
 const contactInfo = {
-  address: "Bihar shrif, Near machhli market  Bihar 803101",
+  address: "Bihar Shrif, Near Machhli Market  Bihar 803101",
   addressMapUrl:
     "https://www.google.com/maps/place/Vikas+Coaching+Institute/@25.1958631,85.5150726,17z/data=!4m6!3m5!1s0x39f2f35955555523:0xda40d7cb2280c52f!8m2!3d25.195864!4d85.5150741!16s%2Fg%2F11bx8m06zt?hl=en&entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D",
   phone: "+917808900900",
